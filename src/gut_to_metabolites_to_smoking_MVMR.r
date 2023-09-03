@@ -65,22 +65,23 @@ for (i in 1:length(table[,1])){
                              #eaf_col='EAF',
                              #pval_col='P')
  mvdat <- mv_harmonise_data(exposure_mvdat, outcome_mvdat)
- exposure <- as.data.frame(mvdat[["exposure_beta"]])
-
- MRMVInputObject <- mr_mvinput(bx=cbind (exposure[,1],
-                                        exposure[,2],
-                                        exposure[,3],
-                                        exposure[,4],
-                                        exposure[,5],
-                                        exposure[,6],
-                                        exposure[,7]),
-                              bxse=cbind (exposure[,1],
-                                          exposure[,2],
-                                          exposure[,3],
-                                          exposure[,4],
-                                          exposure[,5],
-                                          exposure[,6],
-                                          exposure[,7]),
+ exposure.beta <- as.data.frame(mvdat[["exposure_beta"]])
+ exposure.se <- as.data.frame(mvdat[["exposure_se"]])
+  
+ MRMVInputObject <- mr_mvinput(bx=cbind (exposure.beta[,1],
+                                        exposure.beta[,2],
+                                        exposure.beta[,3],
+                                        exposure.beta[,4],
+                                        exposure.beta[,5],
+                                        exposure.beta[,6],
+                                        exposure.beta[,7]),
+                              bxse=cbind (exposure.se[,1],
+                                          exposure.se[,2],
+                                          exposure.se[,3],
+                                          exposure.se[,4],
+                                          exposure.se[,5],
+                                          exposure.se[,6],
+                                          exposure.se[,7]),
                               by=mvdat[["outcome_beta"]],
                               byse=mvdat[["outcome_se"]])
 
@@ -163,12 +164,13 @@ outcome_mvdat <- format_data(dat=lifetime,
                              eaf_col='EAF',
                              pval_col='P')
  mvdat <- mv_harmonise_data(exposure_mvdat, outcome_mvdat)
- exposure <- as.data.frame(mvdat[["exposure_beta"]])
-
- MRMVInputObject <- mr_mvinput(bx=cbind (exposure[,1],
-                                        exposure[,2]),
-                              bxse=cbind (exposure[,1],
-                                          exposure[,2]),
+ exposure.beta <- as.data.frame(mvdat[["exposure_beta"]])
+ exposure.se <- as.data.frame(mvdat[["exposure_se"]])
+  
+ MRMVInputObject <- mr_mvinput(bx=cbind (exposure.beta[,1],
+                                         exposure.beta[,2]),
+                              bxse=cbind (exposure.se[,1],
+                                          exposure.se[,2]),
                               by=mvdat[["outcome_beta"]],
                               byse=mvdat[["outcome_se"]])
 
